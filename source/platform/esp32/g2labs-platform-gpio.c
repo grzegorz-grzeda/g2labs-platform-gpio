@@ -16,6 +16,14 @@
 
 #define PLATFORM_GPIO_PIN_NUMBER_MAX (48)
 
+#define ERR_RET(condition, return_value)           \
+    do {                                           \
+        int _ERR_RET_CONDITION = (int)(condition); \
+        if (_ERR_RET_CONDITION == 0) {             \
+            return (return_value);                 \
+        }                                          \
+    } while (0)
+
 static platform_gpio_input_handler_t platform_input_handler = NULL;
 
 bool platform_gpio_initialize(platform_gpio_input_handler_t input_handler) {
